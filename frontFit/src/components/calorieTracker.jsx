@@ -1,0 +1,86 @@
+import React, { useState } from 'react';
+import axios from 'axios';
+import FoodForm from './foodform.jsx';
+
+function CalorieTracker() {
+  const [calorias, setCalorias] = useState('');
+  const [totalCalories, setTotalCalories] = useState(0);
+  const [foods, setFoods] = useState([]);
+  const [responseData, setResponseData] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (calorias) {
+      try {
+        const response = await axios.post("http://localhost:5000/calorias", {
+          calorias: parseFloat(calorias),
+        });
+
+        //setTotalCalories(response.data.totalCalorias); // Atualiza as calorias totais com a resposta do backend
+        setResponseData(response.data);
+        setCalorias('');
+      } catch (error) {
+        console.error("Erro:", error);
+      }
+    }
+  };
+
+  const sendFoodList = async () => {
+    try {
+      const response = await axios.post("http://localhost:5000/api/alimentos", {
+        totalCalorias: totalCalories,
+        alimentos: foods,
+      });
+
+      setResponseData(response.data);
+    } catch (error) {
+      console.error("Erro:", error);
+    }
+  };
+
+  const addFood = (food) => {
+    setFoods([...foods, food]);
+    setTotalCalories(prevTotal => prevTotal + food.calories);
+  };
+
+  return (
+    <div>
+      <h1>Rastreamento de Calorias</h1>
+      <h3>Calorias Totais: {totalCalories.toFixed(2)} kcal</h3>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          type="number"
+          placeholder="Adicionar calorias (Kcal)"
+          value={calorias}
+          onChange={(e) => setCalorias(e.target.value)}
+        />
+        <button type="submit">Enviar Calorias</button>
+      </form>
+
+      <FoodForm addFood={addFood} />
+
+      <div>
+        <h3>Lista de Alimentos:</h3>
+        <ul>
+          {foods.map((food, index) => (
+            <li key={index}>
+              <strong>{food.foodName}</strong> - {food.calories} kcal, {food.protein}g Proteína, {food.carbs}g Carboidratos, {food.fat}g Gorduras
+            </li>
+          ))}
+        </ul>
+        <button onClick={sendFoodList}>Enviar Lista de Alimentos</button>
+      </div>
+
+      {responseData && (
+        <div>
+          <h3>Resposta do Backend:</h3>
+          <p><strong>Total de Calorias:</strong> {responseData.totalCalorias}</p>
+          {responseData.mensagem && <p><strong>Mensagem:</strong> {responseData.mensagem}</p>}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default CalorieTracker;
