@@ -12,16 +12,12 @@ function CalorieTracker() {
         e.preventDefault();
         if (calorias) {
             try {
-                //const response = await axios.post("http://localhost:5000/dieta", {
-                //headers: { 'Content-Type': 'application/json' },
-                // body: { calorias: parseInt(calorias) },
-                // });
+
                 const response = await axios.post("http://localhost:5000/dieta",
-                    { calorias: parseInt(calorias) }, // Aqui vai o corpo correto da requisição
-                    { headers: { 'Content-Type': 'application/json' } } // Cabeçalhos vêm no terceiro argumento
+                    { calorias: parseInt(calorias) }, 
+                    { headers: { 'Content-Type': 'application/json' } } 
                 );
 
-                //setTotalCalories(response.data.totalCalorias); // Atualiza as calorias totais com a resposta do backend
                 setResponseData(response.data);
                 console.log(response.data);
                 setCalorias('');
@@ -33,12 +29,13 @@ function CalorieTracker() {
 
     const sendFoodList = async () => {
         try {
-            const response = await axios.post("http://localhost:5000/api/alimento", {
-                totalCalorias: totalCalories,
-                alimentos: foods,
-            });
+            const response = await axios.post("http://localhost:5000/alimento", 
+                {alimentos: foods},
+                { headers: { 'Content-Type': 'application/json' } } 
 
-            setResponseData(response.data);
+            );
+
+            //setResponseData(response.data);
         } catch (error) {
             console.error("Erro:", error);
         }
@@ -71,7 +68,7 @@ function CalorieTracker() {
                 <ul>
                     {foods.map((food, index) => (
                         <li key={index}>
-                            <strong>{food.foodName}</strong> - {food.calories} kcal, {food.protein}g Proteína, {food.carbs}g Carboidratos, {food.fat}g Gorduras
+                            <strong>{food.nome}</strong> - {food.calorias} kcal, {food.nutritivo}g Nutritivo
                         </li>
                     ))}
                 </ul>

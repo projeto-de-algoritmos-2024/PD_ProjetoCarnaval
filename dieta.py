@@ -28,6 +28,7 @@ alimentos = [
 
 @app.route('/dieta', methods=['POST'])
 def dieta():
+    print(alimentos)
     data = request.get_json()
 
     calorias = data.get('calorias')
@@ -52,13 +53,17 @@ def dieta():
 
 @app.route('/disponiveis', methods=['GET'])
 def lista():
-    return jsonify(alimentos)
+    return jsonify(alimentos), 200
 
 @app.route('/alimento', methods=['POST'])
 def alimento():
-    comida = request.get_json()
-    alimentos.append(comida)
-    return jsonify({"message": "Alimento adicionado com sucesso!"}), 201
+    data = request.get_json()
+    banquete = data.get('alimentos')
+
+    for comida in banquete:
+        alimentos.append(comida)
+
+    return jsonify({"message": "Alimento adicionado com sucesso!"}), 200
 
 @app.route('/delete', methods=['DELETE'])
 def delete():
@@ -68,7 +73,7 @@ def delete():
     remove = data.get('nome')
 
     alimentos = [d for d in alimentos if d["nome"] != remove]
-    return jsonify({"message": "Alimento deletado com sucesso!"}), 201
+    return jsonify({"message": "Alimento deletado com sucesso!"}), 200
 
 if __name__ == '__main__':
     app.run()

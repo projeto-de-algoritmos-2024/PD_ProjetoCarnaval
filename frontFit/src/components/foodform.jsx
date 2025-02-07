@@ -1,27 +1,22 @@
 import React, { useState } from 'react';
 
 function FoodForm({ addFood }) {
-  const [foodName, setFoodName] = useState('');
-  const [calories, setCalories] = useState('');
-  const [protein, setProtein] = useState('');
-  const [carbs, setCarbs] = useState('');
-  const [fat, setFat] = useState('');
-
+  const [nome, setFoodName] = useState('');
+  const [calorias, setCalories] = useState('');
+  const [nutritivo, setNutritivo] = useState('');
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (foodName && calories && protein && carbs && fat) {
+    if (nome && calorias && nutritivo) {
       addFood({
-        foodName,
-        calories: parseInt(calories),
-        protein: parseFloat(protein),
-        carbs: parseFloat(carbs),
-        fat: parseFloat(fat),
+        nome,
+        calorias: parseInt(calorias),
+        nutritivo: parseFloat(nutritivo),
+
       });
       setFoodName('');
       setCalories('');
-      setProtein('');
-      setCarbs('');
-      setFat('');
+      setNutritivo('');
     }
   };
 
@@ -31,32 +26,20 @@ function FoodForm({ addFood }) {
       <input
         type="text"
         placeholder="Nome do alimento"
-        value={foodName}
+        value={nome}
         onChange={(e) => setFoodName(e.target.value)}
       />
       <input
         type="number"
         placeholder="Calorias"
-        value={calories}
+        value={calorias}
         onChange={(e) => setCalories(e.target.value)}
       />
       <input
         type="number"
-        placeholder="Proteínas (g)"
-        value={protein}
-        onChange={(e) => setProtein(e.target.value)}
-      />
-      <input
-        type="number"
-        placeholder="Carboidratos (g)"
-        value={carbs}
-        onChange={(e) => setCarbs(e.target.value)}
-      />
-      <input
-        type="number"
-        placeholder="Gorduras (g)"
-        value={fat}
-        onChange={(e) => setFat(e.target.value)}
+        placeholder="Nutritivo (g)"
+        value={nutritivo}
+        onChange={(e) => setNutritivo(e.target.value)}
       />
       <button type="submit">Adicionar</button>
     </form>
