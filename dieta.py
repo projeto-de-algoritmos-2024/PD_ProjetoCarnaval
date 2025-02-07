@@ -1,11 +1,12 @@
 from flask import Flask, request,jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 alimentos = [
     {"nome": "Maçã", "calorias": 52, "nutritivo": 8},
-    {"nome": "Brócolis", "calorias": 55, "nutritivo": 10},
-    {"nome": "Salmão", "calorias": 208, "nutritivo": 10},
+    {"nome": "Brócolis", "calorias": 55, "nutritivo": 10}, {"nome": "Salmão", "calorias": 208, "nutritivo": 10},
     {"nome": "Aveia", "calorias": 68, "nutritivo": 9},
     {"nome": "Quinoa", "calorias": 120, "nutritivo": 9},
     {"nome": "Iogurte Natural", "calorias": 59, "nutritivo": 8},
@@ -25,7 +26,7 @@ alimentos = [
     {"nome": "Coxinha", "calorias": 280, "nutritivo": 3}
 ]
 
-@app.route('/dieta', methods=['GET'])
+@app.route('/dieta', methods=['POST'])
 def dieta():
     data = request.get_json()
 
