@@ -72,8 +72,10 @@ def weighted_interval_scheduling():
 def criar_tarefa():
     data = request.get_json()
     tarefas = data.get('atividades')
+    print(tarefas)
 
     for tarefa in tarefas:
+        print(tarefa)
         atividades.append(tarefa)
 
     return jsonify({"message": "Tarefa adicionada com sucesso!"}), 200
