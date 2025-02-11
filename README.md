@@ -14,6 +14,10 @@ O Projeto Carnaval nasceu da necessidade de equilibrar saúde e bem-estar com a 
 
 Nosso objetivo é oferecer ferramentas que facilitam a criação de planos alimentares, sugestões de atividades físicas e um planejamento eficiente para que você alcance seus objetivos sem estresse. Seja para adotar hábitos mais saudáveis ou simplesmente organizar melhor seu tempo, o Projeto Carnaval está aqui para te ajudar a brilhar!
 
+## Vídeo
+
+[Link para o vídeo](https://youtu.be/3LzKFY1-o0g)
+
 ## Screenshots
 
 ![dieta1](./assets/dieta1.png)
