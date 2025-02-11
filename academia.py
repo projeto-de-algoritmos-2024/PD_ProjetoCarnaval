@@ -80,6 +80,9 @@ def criar_tarefa():
 
     return jsonify({"message": "Tarefa adicionada com sucesso!"}), 200
 
+@app.route('/tarefa', methods=['GET'])
+def mostrar_tarefas():
+    return jsonify(atividades), 200
     
 if __name__ == '__main__':
     app.run()
