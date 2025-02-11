@@ -16,13 +16,13 @@ Nosso objetivo é oferecer ferramentas que facilitam a criação de planos alime
 
 ## Screenshots
 
-![dieta1](./assets/dieta1)
+![dieta1](./assets/dieta1.png)
 
-![dieta2](./assets/dieta2)
+![dieta2](./assets/dieta2.png)
 
-![agenda1](./assets/agenda1)
+![agenda1](./assets/agenda1.png)
 
-![agenda2](./assets/agenda2)
+![agenda2](./assets/agenda2.png)
 
 ## Instalação 
 **Linguagem**: Python, Javascript<br>
