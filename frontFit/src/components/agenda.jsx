@@ -24,7 +24,7 @@ const Calendar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!newActivity.nome || !newActivity.prioridade || !newActivity.inicio || !newActivity.fim) {
-      alert('Por favor, preencha todos os campos!');
+      alert('preencha todos os campos');
       return;
     }
 
@@ -57,10 +57,10 @@ const Calendar = () => {
         { headers: { 'Content-Type': 'application/json' } }
       );
       alert('Atividades enviadas com sucesso!');
-      console.log('Atividades enviadas:', atividadesC);
+      console.log('Atividades:', atividadesC);
     } catch (error) {
-      console.error('Erro ao enviar atividades:', error);
-      alert('Erro ao enviar atividades!');
+      console.error('Erro:', error);
+      alert('Erro');
     }
   };
 
@@ -68,10 +68,10 @@ const Calendar = () => {
     try {
       const response = await axios.get('http://localhost:5000/grade');
       setActivities(response.data);
-      alert('Atividades corrigidas recebidas!');
+      alert('Atividades');
     } catch (error) {
-      console.error('Erro ao buscar atividades corrigidas:', error);
-      alert('Erro ao buscar atividades corrigidas!');
+      console.error('Erro:', error);
+      alert('Erro');
     }
   };
 
