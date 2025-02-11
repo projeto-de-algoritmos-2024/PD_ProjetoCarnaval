@@ -10,10 +10,12 @@
   width: 300px;
   border: 1px solid #ccc;
   overflow: hidden;
+  color: #d3d3d3;
 }
 
 .hours {
   position: relative;
+  color: #d3d3d3;
 }
 
 .hour {
@@ -41,6 +43,7 @@
   padding: 5px;
   text-align: center;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  font: bold;
 }
 
 .send-buttom{

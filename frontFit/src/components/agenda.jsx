@@ -47,8 +47,8 @@ const Calendar = () => {
     try {
       const atividadesC = atividades.map((activity) => ({
         ...activity,
-        inicio: `${activity.inicio}:00`,
-        fim: `${activity.fim}:00`,
+        inicio: `${activity.inicio}`,
+        fim: `${activity.fim}`,
       }));
       console.log(atividadesC);
       const response = await axios.post(
