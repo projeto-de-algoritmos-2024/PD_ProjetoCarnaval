@@ -42,7 +42,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 4px;
   font-weight: bold;
   user-select: none;
 }
@@ -68,7 +67,6 @@
   color: white;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

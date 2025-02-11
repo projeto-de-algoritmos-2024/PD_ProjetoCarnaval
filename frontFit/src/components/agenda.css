@@ -1,137 +1,52 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 .calendar-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
-  min-height: 100vh;
-  background-color: #f0f4f8;
-  padding: 20px;
+  gap: 20px;
 }
 
 .calendar {
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-  height: 90vh;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  position: relative;
+  width: 300px;
+  border: 1px solid #ccc;
   overflow: hidden;
 }
 
 .hours {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  height: 90%;
-  overflow-y: auto;
+  position: relative;
 }
 
 .hour {
+  position: relative;
   height: 60px;
-  background-color: #e2e8f0;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  font-weight: bold;
-  user-select: none;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+  line-height: 60px;
+  background: #f8f8f8;
 }
 
 .activities {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
+  width: 100%;
 }
 
 .activity {
   position: absolute;
   left: 5px;
   right: 5px;
-  background-color: #4caf50;
+  background-color: rgba(255, 165, 0, 0.8);
   color: black;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  padding: 8px;
-  font-size: 0.6rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  pointer-events: auto;
-  width: 50%;
+  padding: 5px;
+  text-align: center;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.activity-details {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+.send-buttom{
+  margin: 5px;
 }
 
-.activity-name {
-  font-size: 1rem;
-  font-weight: bold;
+.get-corrected-button{
+  margin: 5px;
 }
-
-.activity-time {
-  font-size: 0.9rem;
-}
-
-.activity-priority {
-  font-size: 0.8rem;
-  font-style: italic;
-}
-
-.form-container {
-  width: 30%;
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-  margin-bottom: 20px;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-label {
-  font-weight: bold;
-}
-
-input, select {
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-button {
-  background-color: #4caf50;
-  color: white;
-  padding: 10px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-

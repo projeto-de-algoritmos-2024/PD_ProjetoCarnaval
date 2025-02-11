@@ -48,13 +48,13 @@ function CalorieTracker() {
 
     return (
         <div>
-            <h1>Rastreamento de Calorias</h1>
+            <h1>Informe as Calorias totais diárias</h1>
             <h3>Calorias Totais: {totalCalories.toFixed(2)} kcal</h3>
 
             <form onSubmit={handleSubmit}>
                 <input
                     type="number"
-                    placeholder="Adicionar calorias (Kcal)"
+                    placeholder="calorias (Kcal)"
                     value={calorias}
                     onChange={(e) => setCalorias(e.target.value)}
                 />

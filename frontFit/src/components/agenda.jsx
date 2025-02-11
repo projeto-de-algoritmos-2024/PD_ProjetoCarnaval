@@ -28,7 +28,13 @@ const Calendar = () => {
       return;
     }
 
-    setActivities((prev) => [...prev, newActivity]);
+    const updatedActivity = {
+      ...newActivity,
+      inicio: `${newActivity.inicio}:00`,
+      fim: `${newActivity.fim}:00`,
+    };
+
+    setActivities((prev) => [...prev, updatedActivity]);
     setNewActivity({
       nome: '',
       prioridade: 1,
@@ -39,14 +45,19 @@ const Calendar = () => {
 
   const sendActivitiesToAPI = async () => {
     try {
-      console.log(atividades)
+      const atividadesC = atividades.map((activity) => ({
+        ...activity,
+        inicio: `${activity.inicio}:00`,
+        fim: `${activity.fim}:00`,
+      }));
+      console.log(atividadesC);
       const response = await axios.post(
         'http://localhost:5000/tarefa',
-        {atividades},
+        { atividadesC },
         { headers: { 'Content-Type': 'application/json' } }
       );
       alert('Atividades enviadas com sucesso!');
-      console.log('Atividades enviadas:', atividades);
+      console.log('Atividades enviadas:', atividadesC);
     } catch (error) {
       console.error('Erro ao enviar atividades:', error);
       alert('Erro ao enviar atividades!');
@@ -80,13 +91,13 @@ const Calendar = () => {
               key={index}
               className="activity"
               style={{
-                top: `${activity.inicio * 60}px`,
-                height: `${(activity.fim - activity.inicio) * 60}px`,
+                top: `${parseFloat(activity.inicio) * 60}px`, // Convertendo para número inteiro
+                height: `${(parseFloat(activity.fim) - parseFloat(activity.inicio)) * 60}px`,
               }}
             >
               <div className="activity-details">
                 <div className="activity-name">{activity.nome}</div>
-                <div className="activity-time">{`${activity.inicio}:00 - ${activity.fim}:00`}</div>
+                <div className="activity-time">{`${activity.inicio} - ${activity.fim}`}</div>
                 <div className="activity-priority">Prioridade: {activity.prioridade}</div>
               </div>
             </div>
@@ -144,7 +155,7 @@ const Calendar = () => {
             required
           />
 
-          <button type="submit">Criar Atividade</button>
+          <button type="submit" className="send-button">Criar Atividade</button>
         </form>
 
         <button onClick={sendActivitiesToAPI} className="send-button">
